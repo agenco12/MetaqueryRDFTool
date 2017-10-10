@@ -78,6 +78,7 @@ public class DeleteNodeController implements DialogController, Initializable {
 
 		}else{
 			ServiceClass.showErrorDialog("Make sure you have selected the value of the node to be deleted");
+			
 		}
     }
 	
