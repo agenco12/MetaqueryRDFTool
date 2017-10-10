@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditNodeController">
+   <children>
+      <Button fx:id="cancelButton" layoutX="310.0" layoutY="257.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="okButton" layoutX="397.0" layoutY="257.0" minHeight="26.0" mnemonicParsing="false" prefWidth="62.0" text="Ok" />
+      <Label layoutX="32.0" layoutY="31.0" text="Edit Node">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Label layoutX="32.0" layoutY="54.0" text="In the first node, select the value to be modified" />
+      <Circle fill="#42758c" layoutX="152.0" layoutY="167.0" radius="45.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#42758c" layoutX="355.0" layoutY="167.0" radius="45.0" stroke="WHITE" strokeType="INSIDE" />
+      <ComboBox fx:id="nOneComboBox" layoutX="115.0" layoutY="154.0" prefHeight="26.0" prefWidth="74.0" promptText="N1" />
+      <Label layoutX="34.0" layoutY="70.0" text="Then,in the second node, enter the new value to associate with the node." />
+      <TextField fx:id="newValueTextField" layoutX="318.0" layoutY="154.0" prefHeight="26.0" prefWidth="74.0" />
+      <Label layoutX="124.0" layoutY="106.0" text="Old value" />
+      <Label layoutX="324.0" layoutY="106.0" text="New value" />
+   </children>
+</AnchorPane>

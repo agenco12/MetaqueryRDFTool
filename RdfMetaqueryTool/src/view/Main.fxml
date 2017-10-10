@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <MenuBar layoutX="1.0" prefHeight="29.0" prefWidth="900.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="newGraph" mnemonicParsing="false" text="New" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitProgram" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                  <MenuItem fx:id="addNodeMenuItem" mnemonicParsing="false" text="Add Node" />
+                  <MenuItem fx:id="addArchMenuItem" disable="true" mnemonicParsing="false" text="Add Arch" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="deleteAllMenuItem" mnemonicParsing="false" text="Delete All" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Separator layoutX="124.0" layoutY="27.0" orientation="VERTICAL" prefHeight="261.0" prefWidth="6.0" />
+      <SplitPane fx:id="sp" dividerPositions="0.29797979797979796" layoutX="1.0" layoutY="29.0" prefHeight="397.0" prefWidth="900.0">
+        <items>
+          <AnchorPane fx:id="spAp1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ComboBox fx:id="cb" layoutX="29.0" layoutY="160.0" prefHeight="26.0" prefWidth="211.0" promptText="Rdf graph" />
+                  <Label layoutX="35.0" layoutY="134.0" prefHeight="26.0" prefWidth="198.0" text="Select a RDF graph">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label" layoutX="35.0" layoutY="217.0" text="asd">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="79.0" fitWidth="106.0" layoutX="94.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../utils/rdf-128.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="spAp2" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="Primo" layoutX="34.0" layoutY="354.0" prefHeight="26.0" prefWidth="99.0" promptText="P( ?x, ?y )" visible="false" />
+                  <Button fx:id="doButton" layoutX="537.0" layoutY="354.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Run" />
+                  <TextField fx:id="Secondo" layoutX="171.0" layoutY="354.0" prefHeight="26.0" prefWidth="99.0" promptText="Q( ?x, ?z )" visible="false" />
+                  <TextField fx:id="Terzo" layoutX="314.0" layoutY="354.0" prefHeight="26.0" prefWidth="99.0" promptText="Q( ?y , ?z  )" visible="false" />
+                  <ToolBar prefHeight="40.0" prefWidth="656.0">
+                    <items>
+                      <Button fx:id="addNodeButton" mnemonicParsing="false" onAction="#addNode" text="Add Node" />
+                        <Button fx:id="addArchButton" mnemonicParsing="false" onAction="#addArch" text="Add Arch" />
+                        <Button fx:id="editNodeButton" mnemonicParsing="false" onAction="#editNode" text="Edit Node" />
+                        <Button fx:id="editArchButton" mnemonicParsing="false" onAction="#editArch" text="Edit Arch" />
+                        <Button fx:id="deleteNodeButton" mnemonicParsing="false" onAction="#deleteNode" text="Delete Node" />
+                        <Button fx:id="deleteArchButton" mnemonicParsing="false" onAction="#deleteArch" text="Delete Arch" />
+                        <Button fx:id="deleteAllButton" mnemonicParsing="false" onAction="#deleteAll" text="Delete all" />
+                    </items>
+                  </ToolBar>
+                  <Group fx:id="root" layoutX="285.0" layoutY="173.0" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+      <Label layoutX="40.0" layoutY="444.0" text="Results" />
+      <ListView fx:id="RisultatiList" layoutX="43.0" layoutY="481.0" prefHeight="235.0" prefWidth="817.0" />
+   </children>
+</Pane>

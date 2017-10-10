@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNodeController">
+   <children>
+      <Button fx:id="cancelButton" layoutX="310.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <Button fx:id="okButton" layoutX="397.0" layoutY="257.0" minHeight="26.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="62.0" text="Ok" />
+      <Label layoutX="32.0" layoutY="31.0" text="Add Node">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Circle fill="#42758c" layoutX="250.0" layoutY="163.0" radius="45.0" stroke="WHITE" strokeType="INSIDE" />
+      <TextField fx:id="nTextField" alignment="CENTER" layoutX="226.0" layoutY="150.0" prefHeight="26.0" prefWidth="49.0" promptText="?x" />
+      <Label layoutX="32.0" layoutY="54.0" text="Enter a variable to associate with the graph node:" />
+   </children>
+</AnchorPane>
