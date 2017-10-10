@@ -27,8 +27,18 @@ public class DeleteArchController implements DialogController, Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		// The problem is here : 
+		// the lOne and lTwo are empty without any info
+		// You load them inside the ComboBoxes which will have nothing
+		// and then you assk in this line ---> 
+		
 		loadNComboBox(nOneComboBox,lOne);
+		
+		// To get the selected item which of course is null
 		String nodeString = (String) nOneComboBox.getSelectionModel().getSelectedItem();
+		
+		// After that you ask for the node with label = null 
+		// and inside the method fromStringToGraphNode() you are getting an error 
 		GraphNode n = ServiceClass.fromStringToGraphNode(nodeString);
 		ArrayList<GraphNode> g = n.getConnectedNodes();
 		for(int i = 0 ; i < g.size();i++){
