@@ -19,10 +19,9 @@ public class DeleteArchController implements DialogController, Initializable {
 	
 	Stage dialogStage;
 	@FXML private Button okButton, cancelButton;
-	@FXML private ComboBox nOneComboBox, nTwoComboBox, propertyComboBox;
-	private ObservableList<String> lOne = FXCollections.observableArrayList();
-	private ObservableList<String> lTwo = FXCollections.observableArrayList();
-
+	@FXML private ComboBox propertyComboBox;
+	private ObservableList<String> propertyList = FXCollections.observableArrayList();
+	private ArrayList<GraphNode> node = ServiceClass.node;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -32,28 +31,24 @@ public class DeleteArchController implements DialogController, Initializable {
 		// You load them inside the ComboBoxes which will have nothing
 		// and then you assk in this line ---> 
 		
-		loadNComboBox(nOneComboBox,lOne);
+		loadPropertyComboBox(propertyComboBox, propertyList);
 		
 		// To get the selected item which of course is null
-		String nodeString = (String) nOneComboBox.getSelectionModel().getSelectedItem();
 		
 		// After that you ask for the node with label = null 
 		// and inside the method fromStringToGraphNode() you are getting an error 
-		GraphNode n = ServiceClass.fromStringToGraphNode(nodeString);
-		ArrayList<GraphNode> g = n.getConnectedNodes();
-		for(int i = 0 ; i < g.size();i++){
-			lTwo.add(g.get(i).getText());
-		}
-		loadNComboBox(nTwoComboBox,lTwo);
+		
 		
 		
 		
 	}
 
-	private void loadNComboBox(ComboBox c, ObservableList<String> l) {
-		for (int i = 0; i < ServiceClass.node.size(); i++) {
-			l.add(ServiceClass.node.get(i).getText());
-
+	private void loadPropertyComboBox(ComboBox c, ObservableList<String> l) {
+		for (int i = 0; i < node.size(); i++) {
+			GraphNode currentNode = node.get(i);
+			for(int j = 0 ; j < currentNode.getEdgesLabelList().size(); j++){
+				l.add(currentNode.getEdgesLabelList().get(j).getText().toString());
+			}
 		}
 		c.setItems(l);
 	}

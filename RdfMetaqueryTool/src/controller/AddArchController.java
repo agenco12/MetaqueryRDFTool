@@ -44,7 +44,7 @@ public class AddArchController implements DialogController, Initializable {
 
 		nOneComboBox.setPromptText("N1");
 		nTwoComboBox.setPromptText("N2");
-		propertyTextField.setPromptText("Propriety");
+		propertyTextField.setPromptText("Property");
 	}
 
 	private void loadNComboBox(ComboBox c, ObservableList<String> l) {

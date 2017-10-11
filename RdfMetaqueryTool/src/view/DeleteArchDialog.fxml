@@ -15,13 +15,10 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label layoutX="32.0" layoutY="54.0" text="First select the nodes involved for the arc to be deleted." />
+      <Label layoutX="32.0" layoutY="54.0" text="Select the value associated with the arc to be deleted." />
       <Circle fill="#42758c" layoutX="87.0" layoutY="167.0" radius="45.0" stroke="WHITE" strokeType="INSIDE" />
       <Circle fill="#42758c" layoutX="395.0" layoutY="167.0" radius="45.0" stroke="WHITE" strokeType="INSIDE" />
       <Line endX="118.0" layoutX="230.0" layoutY="167.0" startX="-100.0" />
-      <ComboBox fx:id="nTwoComboBox" layoutX="358.0" layoutY="155.0" prefHeight="26.0" prefWidth="74.0" promptText="N2" />
-      <ComboBox fx:id="nOneComboBox" layoutX="50.0" layoutY="154.0" prefHeight="26.0" prefWidth="74.0" promptText="N1" />
-      <Label layoutX="32.0" layoutY="70.0" text="Then select the value associated with the arc to be deleted." />
       <ComboBox fx:id="propertyComboBox" layoutX="164.0" layoutY="137.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
