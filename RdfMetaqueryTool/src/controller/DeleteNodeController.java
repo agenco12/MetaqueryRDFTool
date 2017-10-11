@@ -4,13 +4,17 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.glass.ui.Size;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import model.GraphNode;
@@ -24,7 +28,6 @@ public class DeleteNodeController implements DialogController, Initializable {
 	@FXML private ComboBox nOneComboBox;
 	private ObservableList<String> lOne = FXCollections.observableArrayList();
 	private ArrayList<GraphNode> node = ServiceClass.node;
-
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -59,7 +62,7 @@ public class DeleteNodeController implements DialogController, Initializable {
 			//remove this node from arrayList
 			node.remove(n);
 			//delete all connection from this node to other node
-			breakConnectionWithOtherNode(n);
+			//breakConnectionWithOtherNode(n);
 			//delete all edges from this node to other node
 			for(int i = 0 ; i < n.getEdges().size();i++){
 				nodeToDelete.add(n.getEdges().get(i));
@@ -69,9 +72,13 @@ public class DeleteNodeController implements DialogController, Initializable {
 				nodeToDelete.add(n.getEdgesLabelList().get(i));
 			}
 			nodeToDelete.add(n);
-			n.getEdges().clear();
-			n.getConnectedNodes().clear();
+			printConnectedNode();
+			printLabel();
+			printLine();
+			//n.getEdges().clear();
+			//n.getConnectedNodes().clear();
 			//remove from the group the node and the edges 
+			ObservableList<Node> g = ServiceClass.root.getChildren();
 			ServiceClass.root.getChildren().removeAll(nodeToDelete);
 			
 	        dialogStage.close();
@@ -80,8 +87,46 @@ public class DeleteNodeController implements DialogController, Initializable {
 			ServiceClass.showErrorDialog("Make sure you have selected the value of the node to be deleted");
 			
 		}
-    }
+    }	
 	
+	private void printConnectedNode(){
+		for(int i = 0 ; i < node.size();i++){
+			GraphNode currentNode = node.get(i);
+			System.out.println("--------------------------------------------");
+			System.out.println(currentNode.getText());
+			System.out.println("--------------------------------------------");
+			for(int j = 0 ; j < currentNode.getConnectedNodes().size() ; j++){
+				System.out.println(currentNode.getConnectedNodes().get(j).getText());
+
+			}
+		}
+	}
+	
+	private void printLabel(){
+		for(int i = 0 ; i < node.size();i++){
+			GraphNode currentNode = node.get(i);
+			System.out.println("--------------------------------------------");
+			System.out.println(currentNode.getText());
+			System.out.println("--------------------------------------------");
+			for(int j = 0 ; j < currentNode.getEdgesLabelList().size() ; j++){
+				System.out.println(currentNode.getEdgesLabelList().get(j));
+
+			}
+		}
+	}
+	
+	private void printLine(){
+		for(int i = 0 ; i < node.size();i++){
+			GraphNode currentNode = node.get(i);
+			System.out.println("--------------------------------------------");
+			System.out.println(currentNode.getText());
+			System.out.println("--------------------------------------------");
+			for(int j = 0 ; j < currentNode.getEdges().size() ; j++){
+				System.out.println(currentNode.getEdges().get(j).toString());
+
+			}
+		}
+	}
 	
 	private void breakConnectionWithOtherNode(GraphNode n){
 		for(int i = 0 ; i < node.size() ; i++){

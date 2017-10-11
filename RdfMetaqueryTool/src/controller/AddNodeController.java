@@ -66,7 +66,7 @@ public class AddNodeController implements DialogController, Initializable {
 
 	private void createNode(String nodeName) {
 		Random rnd = new Random();
-		int j = 3;
+		int j = -100;
 		int n = 100 - j;
 		int k = rnd.nextInt(n) + j;
 		int h = rnd.nextInt(n) + j;
