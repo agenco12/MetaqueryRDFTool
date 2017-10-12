@@ -117,12 +117,12 @@ public class AddArchController implements DialogController, Initializable {
 	
 	private void print(GraphNode n1, GraphNode n2){
 		System.out.println("NODO 1");
-		System.out.println(n1.getLayoutX() + "<--x - y--->" + n1.getLayoutY());
+		System.out.println(n1.getCenterX() + "<--x - y--->" + n1.getCenterY());
 		for(int i = 0 ; i < n1.getEdges().size() ; i++){
 			System.out.println(n1.getEdges().get(i).toString());
 		}
 		System.out.println("NODO 2");
-		System.out.println(n2.getLayoutX() + "<--x - y--->" + n2.getLayoutY());
+		System.out.println(n2.getCenterX() + "<--x - y--->" + n2.getCenterY());
 		for(int i = 0 ; i < n2.getEdges().size() ; i++){
 			System.out.println(n2.getEdges().get(i).toString());
 		}

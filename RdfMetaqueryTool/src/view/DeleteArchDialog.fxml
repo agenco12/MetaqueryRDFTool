@@ -9,8 +9,8 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeleteArchController">
    <children>
-      <Button fx:id="cancelButton" layoutX="310.0" layoutY="257.0" mnemonicParsing="false" text="Cancel" />
-      <Button fx:id="okButton" layoutX="397.0" layoutY="257.0" minHeight="26.0" mnemonicParsing="false" prefWidth="62.0" text="Ok" />
+      <Button fx:id="cancelButton" layoutX="310.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <Button fx:id="okButton" layoutX="397.0" layoutY="257.0" minHeight="26.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="62.0" text="Ok" />
       <Label layoutX="32.0" layoutY="31.0" text="Delete Arch">
          <font>
             <Font name="System Bold" size="13.0" />
