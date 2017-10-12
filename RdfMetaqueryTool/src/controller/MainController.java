@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -30,7 +31,7 @@ import utils.ServiceClass;
 
 public class MainController implements Initializable {
 	
-	@FXML private Label label;
+	@FXML private Label label, metaquery;
 	@FXML private Button addNodeButton,addArchButton,editNodeButton,editArchButton,deleteAllButton,deleteNodeButton, deleteArchButton, doButton;
 	@FXML private ComboBox<String> cb;
 	@FXML private SplitPane sp;
@@ -47,9 +48,10 @@ public class MainController implements Initializable {
 	      setLabel();
 	      setComboBox();
 	      ServiceClass.root = this.root;
-	      
 
 	}
+	
+
 	
 	public void addNode(){
 		ServiceClass.setDialog("AddNodeDialog", "Add Node");

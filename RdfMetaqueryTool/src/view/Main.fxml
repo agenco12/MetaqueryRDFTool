@@ -60,10 +60,7 @@
             </AnchorPane>
           <AnchorPane fx:id="spAp2" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextField fx:id="Primo" layoutX="34.0" layoutY="354.0" prefHeight="26.0" prefWidth="99.0" promptText="P( ?x, ?y )" visible="false" />
                   <Button fx:id="doButton" layoutX="537.0" layoutY="354.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Run" />
-                  <TextField fx:id="Secondo" layoutX="171.0" layoutY="354.0" prefHeight="26.0" prefWidth="99.0" promptText="Q( ?x, ?z )" visible="false" />
-                  <TextField fx:id="Terzo" layoutX="314.0" layoutY="354.0" prefHeight="26.0" prefWidth="99.0" promptText="Q( ?y , ?z  )" visible="false" />
                   <ToolBar prefHeight="40.0" prefWidth="656.0">
                     <items>
                       <Button fx:id="addNodeButton" mnemonicParsing="false" onAction="#addNode" text="Add Node" />
@@ -76,6 +73,7 @@
                     </items>
                   </ToolBar>
                   <Group fx:id="root" layoutX="285.0" layoutY="173.0" />
+                  <Label fx:id="metaquery" layoutX="34.0" layoutY="359.0" text="Label" visible="false" />
                </children></AnchorPane>
         </items>
       </SplitPane>

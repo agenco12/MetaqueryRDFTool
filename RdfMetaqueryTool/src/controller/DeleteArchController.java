@@ -19,8 +19,7 @@ public class DeleteArchController implements DialogController, Initializable {
 	
 	Stage dialogStage;
 	@FXML private Button okButton, cancelButton;
-	@FXML private ComboBox propertyComboBox;
-	private ObservableList<String> propertyList = FXCollections.observableArrayList();
+	@FXML private ComboBox nOneComboBox,ntwoComboBox;
 	private ArrayList<GraphNode> node = ServiceClass.node;
 
 	@Override
@@ -31,7 +30,6 @@ public class DeleteArchController implements DialogController, Initializable {
 		// You load them inside the ComboBoxes which will have nothing
 		// and then you assk in this line ---> 
 		
-		loadPropertyComboBox(propertyComboBox, propertyList);
 		
 		// To get the selected item which of course is null
 		
@@ -43,15 +41,7 @@ public class DeleteArchController implements DialogController, Initializable {
 		
 	}
 
-	private void loadPropertyComboBox(ComboBox c, ObservableList<String> l) {
-		for (int i = 0; i < node.size(); i++) {
-			GraphNode currentNode = node.get(i);
-			for(int j = 0 ; j < currentNode.getEdgesLabelList().size(); j++){
-				l.add(currentNode.getEdgesLabelList().get(j).getText().toString());
-			}
-		}
-		c.setItems(l);
-	}
+
 	
 	
 	@Override

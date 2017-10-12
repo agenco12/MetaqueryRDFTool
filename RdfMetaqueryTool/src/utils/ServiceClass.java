@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import application.Main;
+import controller.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -19,7 +21,8 @@ public class ServiceClass {
 	
 	public static ArrayList<GraphNode> node = new ArrayList<GraphNode>();
 	public static Group root;
-	public static String metaquery;
+	public static String metaquery = "";
+	
 	
 	
 	public static void setDialog(String dialog,String title){

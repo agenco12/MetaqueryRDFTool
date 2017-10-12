@@ -102,7 +102,8 @@ public class AddArchController implements DialogController, Initializable {
 				connectNodes(nOne, nTwo, property);
 
 				ServiceClass.metaquery += property + "(" + nOne.getText() + "," + nTwo.getText() + ") ";
-
+				System.out.println(ServiceClass.metaquery);
+				print(nOne,nTwo);
 				dialogStage.close();
 			} else {
 				ServiceClass.showErrorDialog("The two nodes are already connected");
@@ -112,6 +113,20 @@ public class AddArchController implements DialogController, Initializable {
 			ServiceClass.showErrorDialog(
 					"Make sure you have selected two nodes with \ndifferent values, verify that the value associated with \nthe property is valid, that is, consists of only one letter");
 		}
+	}
+	
+	private void print(GraphNode n1, GraphNode n2){
+		System.out.println("NODO 1");
+		System.out.println(n1.getLayoutX() + "<--x - y--->" + n1.getLayoutY());
+		for(int i = 0 ; i < n1.getEdges().size() ; i++){
+			System.out.println(n1.getEdges().get(i).toString());
+		}
+		System.out.println("NODO 2");
+		System.out.println(n2.getLayoutX() + "<--x - y--->" + n2.getLayoutY());
+		for(int i = 0 ; i < n2.getEdges().size() ; i++){
+			System.out.println(n2.getEdges().get(i).toString());
+		}
+
 	}
 
 	private boolean checkAreConnected(GraphNode n1, GraphNode n2) {
