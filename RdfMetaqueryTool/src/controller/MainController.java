@@ -31,15 +31,14 @@ import utils.ServiceClass;
 
 public class MainController implements Initializable {
 	
-	@FXML private Label label, metaquery;
+	@FXML private Label label;
 	@FXML private Button addNodeButton,addArchButton,editNodeButton,editArchButton,deleteAllButton,deleteNodeButton, deleteArchButton, doButton;
 	@FXML private ComboBox<String> cb;
 	@FXML private SplitPane sp;
 	@FXML private AnchorPane spAp1,spAp2;
 	@FXML private Group root = new Group();
 	@FXML private MenuItem exit, newGraph, addNodeMenuItem, addArchMenuItem,deleteAllMenuItem, aboutMenuItem;
-	
-	
+	@FXML public static Label metaqueryLabel = new Label();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -48,38 +47,69 @@ public class MainController implements Initializable {
 	      setLabel();
 	      setComboBox();
 	      ServiceClass.root = this.root;
+	      metaqueryLabel.setLayoutX(-270);
+	      metaqueryLabel.setLayoutY(190);
+	      root.getChildren().add(metaqueryLabel);
+	}
+	
+	public void enableButton(){
+		if(ServiceClass.node.size() == 1){
+			editNodeButton.setDisable(false);
+			deleteNodeButton.setDisable(false);
+			deleteAllButton.setDisable(false);
+			
+			editArchButton.setDisable(true);
+			addArchButton.setDisable(true);
+			deleteArchButton.setDisable(true);
+		}
+		else if(ServiceClass.node.size() >= 2){
+
+			editArchButton.setDisable(false);
+			addArchButton.setDisable(false);
+			deleteArchButton.setDisable(false);
+
+		}
 
 	}
 	
-
 	
 	public void addNode(){
 		ServiceClass.setDialog("AddNodeDialog", "Add Node");
+		enableButton();
 	}
 	
 	public void addArch(){
 		ServiceClass.setDialog("AddArchDialog", "Add Arch");
+		enableButton();
 	}
 	
 	public void editNode(){
 		ServiceClass.setDialog("EditNodeDialog", "Edit Node");
+		enableButton();
 	}
 	
 	public void editArch(){
 		ServiceClass.setDialog("EditArchDialog", "Edit Arch");
+		enableButton();
+
 	}
 	
 	public void deleteNode(){
 		ServiceClass.setDialog("DeleteNodeDialog", "Delete Node");
+		enableButton();
+
 	}
 	
 	public void deleteArch(){
 		ServiceClass.setDialog("DeleteArchDialog", "Delete Arch");
+		enableButton();
+
 	}
 	
 	public void deleteAll(){
 		ServiceClass.root.getChildren().clear();
 		ServiceClass.node.clear();
+		ServiceClass.record.clear();
 		}
 	
 	private void setLabel(){

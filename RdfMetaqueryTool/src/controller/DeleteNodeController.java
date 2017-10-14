@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import com.sun.glass.ui.Size;
 
 import javafx.collections.FXCollections;
@@ -19,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import model.GraphNode;
+import model.Record;
 import utils.DialogController;
 import utils.ServiceClass;
 
@@ -76,18 +79,60 @@ public class DeleteNodeController implements DialogController, Initializable {
 			for (int i = 0; i < n.getEdgesLabelList().size(); i++) {
 				nodeToDelete.add(n.getEdgesLabelList().get(i));
 			}
+			
+		/*	for(int i = 0 ; i < node.size() ; i++){
+				GraphNode currentNode  = node.get(i);
+				for(int j= 0 ; j < currentNode.getConnectedNodes().size() ; j++){
+					if(currentNode.equals(n)){
+						currentNode.getConnectedNodes().remove(n);
+					}
+				}
+			}*/
 			nodeToDelete.add(n);
+			if(!ServiceClass.record.isEmpty()){
+			searchAndDeleteRecord(n);}
 			printConnectedNode();
-			printLabel();
-			printLine();
+			//printLabel();
+			//printLine();
 			// remove from the group the node and the edges
 			ServiceClass.root.getChildren().removeAll(nodeToDelete);
+			ArrayList<Record> r = ServiceClass.record;
 
+			MainController.metaqueryLabel.setText(ServiceClass.updateMetaquery());
+			
+
+			System.out.println("DELETE NODE");
+
+			System.out.println(ServiceClass.updateMetaquery());
+
+			System.out.println("--------");
+			
 			dialogStage.close();
 
 		} else {
 			ServiceClass.showErrorDialog("Make sure you have selected the value of the node to be deleted");
 
+		}
+	}
+	
+	private void searchAndDeleteRecord(GraphNode n){
+		ArrayList<Record> r = ServiceClass.record;
+		
+		for(int i = 0 ; i <= r.size() ; i++){
+			Record currentRecord;
+			if(r.size() == 1){
+				currentRecord = r.get(0);
+				if(currentRecord.getN1().getText().equalsIgnoreCase(n.getText()) || currentRecord.getN2().getText().equalsIgnoreCase(n.getText())){
+				r.clear();
+				}
+			}else{
+			currentRecord = r.get(i);
+
+			if(currentRecord.getN1().getText().equalsIgnoreCase(n.getText()) || currentRecord.getN2().getText().equalsIgnoreCase(n.getText())){
+				r.remove(i);
+			}
+			}
+			
 		}
 	}
 
@@ -126,7 +171,6 @@ public class DeleteNodeController implements DialogController, Initializable {
 	private void printConnectedNode() {
 		for (int i = 0; i < node.size(); i++) {
 			GraphNode currentNode = node.get(i);
-			System.out.println("--------------------------------------------");
 			System.out.println(currentNode.getText());
 			System.out.println("--------------------------------------------");
 			for (int j = 0; j < currentNode.getConnectedNodes().size(); j++) {

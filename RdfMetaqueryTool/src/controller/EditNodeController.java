@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.GraphNode;
+import model.Record;
 import utils.DialogController;
 import utils.ServiceClass;
 
@@ -60,6 +61,10 @@ public class EditNodeController implements DialogController, Initializable {
 		if (isInputValid(nOneComboBox,newValueTextField)) {
 
 			String g = (String) nOneComboBox.getSelectionModel().getSelectedItem();
+			GraphNode n1 = ServiceClass
+					.fromStringToGraphNode((String) nOneComboBox.getSelectionModel().getSelectedItem());
+			
+			editGraphNodeName(n1,newValueTextField.getText().toString());
 			
 			for(int i = 0 ; i < node.size() ; i++){
 				if(node.get(i).getText().equalsIgnoreCase(g)){
@@ -68,6 +73,14 @@ public class EditNodeController implements DialogController, Initializable {
 					break;
 				}
 			}
+			
+			System.out.println("EDIT NODE");
+			MainController.metaqueryLabel.setText(ServiceClass.updateMetaquery());
+
+
+			System.out.println(ServiceClass.updateMetaquery());
+
+			System.out.println("--------");
 
 			dialogStage.close();
 		} else {
@@ -75,6 +88,17 @@ public class EditNodeController implements DialogController, Initializable {
 					"Make sure that you enter a valid value and that this is preceded by the \"?\" Character");
 		}
 
+	}
+	
+	private void editGraphNodeName(GraphNode n,String value){
+		for(int i = 0 ; i < ServiceClass.record.size() ; i++){
+			Record currentRecord = ServiceClass.record.get(i);
+			if(currentRecord.getN1().equals(n)){
+				currentRecord.getN1().setText(value);
+			}else if(currentRecord.getN2().equals(n)){
+				currentRecord.getN2().setText(value);
+			}
+		}
 	}
 
 	private boolean isInputValid(ComboBox c, TextField t) {

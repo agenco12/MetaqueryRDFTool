@@ -9,8 +9,8 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditArchController">
    <children>
-      <Button fx:id="cancelButton" layoutX="310.0" layoutY="257.0" mnemonicParsing="false" text="Cancel" />
-      <Button fx:id="okButton" layoutX="397.0" layoutY="257.0" minHeight="26.0" mnemonicParsing="false" prefWidth="62.0" text="Ok" />
+      <Button fx:id="cancelButton" layoutX="310.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <Button fx:id="okButton" layoutX="397.0" layoutY="257.0" minHeight="26.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="62.0" text="Ok" />
       <Label layoutX="32.0" layoutY="31.0" text="Edit Arch">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -22,6 +22,6 @@
       <ComboBox fx:id="nTwoComboBox" layoutX="358.0" layoutY="155.0" prefHeight="26.0" prefWidth="74.0" promptText="N2" />
       <ComboBox fx:id="nOneComboBox" layoutX="50.0" layoutY="154.0" prefHeight="26.0" prefWidth="74.0" promptText="N1" />
       <Label layoutX="32.0" layoutY="70.0" text="Then select the value associated with the arc." />
-      <ComboBox fx:id="propertyComboBox" layoutX="164.0" layoutY="137.0" prefWidth="150.0" />
+      <TextField fx:id="propertyTextField" layoutX="169.0" layoutY="137.0" promptText="Property" />
    </children>
 </AnchorPane>

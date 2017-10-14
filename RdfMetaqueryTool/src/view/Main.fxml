@@ -64,16 +64,16 @@
                   <ToolBar prefHeight="40.0" prefWidth="656.0">
                     <items>
                       <Button fx:id="addNodeButton" mnemonicParsing="false" onAction="#addNode" text="Add Node" />
-                        <Button fx:id="addArchButton" mnemonicParsing="false" onAction="#addArch" text="Add Arch" />
-                        <Button fx:id="editNodeButton" mnemonicParsing="false" onAction="#editNode" text="Edit Node" />
-                        <Button fx:id="editArchButton" mnemonicParsing="false" onAction="#editArch" text="Edit Arch" />
-                        <Button fx:id="deleteNodeButton" mnemonicParsing="false" onAction="#deleteNode" text="Delete Node" />
-                        <Button fx:id="deleteArchButton" mnemonicParsing="false" onAction="#deleteArch" text="Delete Arch" />
-                        <Button fx:id="deleteAllButton" mnemonicParsing="false" onAction="#deleteAll" text="Delete all" />
+                        <Button fx:id="addArchButton" disable="true" mnemonicParsing="false" onAction="#addArch" text="Add Arch" />
+                        <Button fx:id="editNodeButton" disable="true" mnemonicParsing="false" onAction="#editNode" text="Edit Node" />
+                        <Button fx:id="editArchButton" disable="true" mnemonicParsing="false" onAction="#editArch" text="Edit Arch" />
+                        <Button fx:id="deleteNodeButton" disable="true" mnemonicParsing="false" onAction="#deleteNode" text="Delete Node" />
+                        <Button fx:id="deleteArchButton" disable="true" mnemonicParsing="false" onAction="#deleteArch" text="Delete Arch" />
+                        <Button fx:id="deleteAllButton" disable="true" mnemonicParsing="false" onAction="#deleteAll" text="Delete all" />
                     </items>
                   </ToolBar>
                   <Group fx:id="root" layoutX="285.0" layoutY="173.0" />
-                  <Label fx:id="metaquery" layoutX="34.0" layoutY="359.0" text="Label" visible="false" />
+                  <Label fx:id="metaqueryLabel" layoutX="34.0" layoutY="359.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

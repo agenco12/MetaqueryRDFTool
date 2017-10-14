@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import model.GraphNode;
+import model.Record;
 import utils.DialogController;
 import utils.ServiceClass;
 
@@ -64,6 +66,7 @@ public class AddArchController implements DialogController, Initializable {
 
 		Line edgeLine = new Line(node1.getCenterX(), node1.getCenterY(), node2.getCenterX(), node2.getCenterY());
 		Label edgeLabel = new Label(edgeText);
+		
 
 		node1.addNeighbor(node2);
 		node2.addNeighbor(node1);
@@ -71,6 +74,8 @@ public class AddArchController implements DialogController, Initializable {
 		node1.addEdge(edgeLine, edgeLabel);
 		node2.addEdge(edgeLine, edgeLabel);
 
+		ServiceClass.record.add(new Record(node1,node2,edgeLine,edgeLabel));
+		ArrayList<Record> c = ServiceClass.record;
 		ServiceClass.root.getChildren().addAll(edgeLine, edgeLabel);
 
 	}
@@ -102,8 +107,17 @@ public class AddArchController implements DialogController, Initializable {
 				connectNodes(nOne, nTwo, property);
 
 				ServiceClass.metaquery += property + "(" + nOne.getText() + "," + nTwo.getText() + ") ";
-				System.out.println(ServiceClass.metaquery);
+				//System.out.println(ServiceClass.metaquery);
+				//MainController.metaqueryLabel.setText(ServiceClass.metaquery);
+				MainController.metaqueryLabel.setText(ServiceClass.updateMetaquery());
+
 				print(nOne,nTwo);
+				
+				System.out.println("ADD ARCH");
+
+				System.out.println(ServiceClass.updateMetaquery());
+
+				System.out.println("--------");
 				dialogStage.close();
 			} else {
 				ServiceClass.showErrorDialog("The two nodes are already connected");
@@ -116,16 +130,16 @@ public class AddArchController implements DialogController, Initializable {
 	}
 	
 	private void print(GraphNode n1, GraphNode n2){
+		System.out.println("ADD ARCH");
 		System.out.println("NODO 1");
-		System.out.println(n1.getCenterX() + "<--x - y--->" + n1.getCenterY());
-		for(int i = 0 ; i < n1.getEdges().size() ; i++){
-			System.out.println(n1.getEdges().get(i).toString());
+		for(int i = 0 ; i < n1.getConnectedNodes().size() ; i++){
+			System.out.println(n1.getConnectedNodes().get(i).getText());
 		}
 		System.out.println("NODO 2");
-		System.out.println(n2.getCenterX() + "<--x - y--->" + n2.getCenterY());
-		for(int i = 0 ; i < n2.getEdges().size() ; i++){
-			System.out.println(n2.getEdges().get(i).toString());
+		for(int i = 0 ; i < n2.getConnectedNodes().size() ; i++){
+			System.out.println(n2.getConnectedNodes().get(i).getText());
 		}
+		System.out.println("--------------");
 
 	}
 

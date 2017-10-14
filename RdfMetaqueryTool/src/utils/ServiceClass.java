@@ -16,13 +16,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.GraphNode;
+import model.Record;
 
 public class ServiceClass {
 	
 	public static ArrayList<GraphNode> node = new ArrayList<GraphNode>();
 	public static Group root;
 	public static String metaquery = "";
-	
+	public static ArrayList<Record> record = new ArrayList<Record>();
 	
 	
 	public static void setDialog(String dialog,String title){
@@ -80,5 +81,14 @@ public class ServiceClass {
 			return null;
 		}
 
-
+	 public static String updateMetaquery(){
+		 String query = "";
+		 for(int i = 0; i < record.size() ; i++){
+			 Record currentRecord = record.get(i);	
+				query += currentRecord.getEdgeLabel().getText().toString() + "(" + currentRecord.getN1().getText() + "," + currentRecord.getN2().getText() + ") ";
+		 }
+		 return query;
+	 }
+	 
+	 
 }
